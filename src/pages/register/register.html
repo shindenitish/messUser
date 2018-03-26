@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title >
+      myMess (Beta)
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+  
+  <ion-content padding>
+    <ion-list inset>
+      <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>        
+        <ion-label stacked>Full Name</ion-label>
+        <ion-item>
+          <ion-input formControlName="userName" type="text"></ion-input>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.userName.valid  && signupForm.controls.userName.dirty">
+          Enter a valid name (min. 5 characters)
+        </p>
+        
+        <ion-label stacked>Email</ion-label>
+        <ion-item>
+          <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
+          Enter a valid email id
+        </p>
+               
+        <ion-label Stacked>Password</ion-label>
+        <ion-item>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
+          Weak password (min. 6 characters)
+        </p>
+                
+        <ion-label stacked>Mobile Number</ion-label>
+        <ion-item>
+          <ion-input formControlName="contact" type="number"></ion-input>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.contact.valid  && signupForm.controls.contact.dirty">
+          Enter a valid 10 digits mobile number
+        </p>
+
+        <ion-label stacked>Address</ion-label>
+        <ion-item>
+          <ion-textarea formControlName="address" type="text"></ion-textarea>
+        </ion-item>
+        
+        <ion-label stacked>City</ion-label>
+        <ion-item>
+          <ion-input formControlName="city" type="text"></ion-input>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.city.valid  && signupForm.controls.city.dirty">
+          City is required
+        </p>    
+        <button ion-button margin-top block type="submit" [disabled]="!signupForm.valid">Create Account</button>      
+      </form>
+    </ion-list>
+  </ion-content>

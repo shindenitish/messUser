@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title >
+        myMess (Beta)
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list inset>
+      <div>
+        <img src="assets/imgs/logo.png">
+      </div>
+      
+      <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>        
+        <ion-label stacked>Email</ion-label>          
+        <ion-item>
+            <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>        
+        <p *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+          Enter a valid email id
+        </p>
+        
+        <ion-label Stacked>Password</ion-label>
+        <ion-item>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <p *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+          Weak password (min. 6 characters)
+        </p>
+        
+        <button margin-top ion-button block type="submit" [disabled]="!loginForm.valid">Login</button>      
+      </form>
+    
+      <div padding-top style="text-align:center">
+        <a (click)="goToResetPassword()">
+          Forgot password?
+        </a>
+      </div>
+  
+      <div margin-top>
+        <ion-row>
+          <ion-col col-5><hr></ion-col>
+          <ion-col col-2 style="text-align:center;">OR</ion-col>
+          <ion-col col-5><hr></ion-col>
+        </ion-row>
+      </div>
+      
+      <div>
+          <button disabled ion-button icon-left block>
+              <ion-icon name="logo-google"></ion-icon>
+              &nbsp; Log in with Google
+          </button>      
+      </div>
+      <div padding-top style="text-align:center;">
+        <a (click)="createAccount()">
+          Don't have an account yet? Register here!
+        </a>
+      </div>
+    </ion-list>
+  </ion-content>

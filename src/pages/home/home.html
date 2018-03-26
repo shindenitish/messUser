@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      myMess (Beta)
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of items | async">
+    <ion-card-content>
+      <ion-card-title (click)="viewMess(item.messId, item.messName)">
+        {{item.messName}}
+      </ion-card-title>
+      <p>
+        {{item.address.address}}<br/>
+        {{item.address.city}}<br/>
+        {{item.ownerName}} ({{item.contact}})<br/>
+        {{item.email}}
+      </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col col-10>
+        <button ion-button icon-only clear small>
+          <div style="width:20px; height:20px;">
+            <img *ngIf="item.menuType=='false'" src="assets/imgs/veg.png">
+            <img *ngIf="item.menuType=='true'" src="assets/imgs/non-veg.png">
+          </div>
+        </button>
+      </ion-col>        
+      <ion-col col-1>
+        <button ion-button icon-only clear small (click)="viewLocation()">
+          <ion-icon name="map"></ion-icon>
+        </button>
+      </ion-col>        
+    </ion-row>
+  </ion-card>  
+</ion-content>

@@ -1,0 +1,28 @@
+page-add-review {
+    p{
+        font-size: smaller;
+        color: #e13838 !important;
+        padding-left: 15px;
+    }
+
+    ion-label{
+        padding-left: 15px;
+    }
+
+    .review{                 
+
+        .item-inner{                
+            background: rgb(241, 237, 237) !important;  
+            border-bottom-color: transparent !important; 
+            box-shadow:none!important;                      
+        }
+
+        .input.ng-dirty.ng-valid {
+            border-left: #5bec7f solid 2px;
+        }
+
+        .input.ng-dirty.ng-invalid {
+            border-left: #ec6a5b solid 2px;
+        }
+    }
+}

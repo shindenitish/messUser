@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title >
+      myMess (Beta)
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content>
+  <!-- <ion-item no-lines>
+    <ion-avatar >
+      <img src="assets/imgs/profile.jpg">
+    </ion-avatar>
+  </ion-item> -->
+  <ion-list inset>    
+    <ion-label stacked>Full Name</ion-label>
+    <ion-item no-lines>
+      <ion-input disabled type="text" value="{{user.userName}}"></ion-input>
+    </ion-item>
+    <ion-label stacked>Email</ion-label>
+    <ion-item no-lines>
+      <ion-input disabled type="text" value="{{user.email}}"></ion-input>
+    </ion-item>
+    <ion-label stacked>Contact</ion-label>
+    <ion-item no-lines>
+      <ion-input disabled type="text" value="{{user.contact}}"></ion-input>
+    </ion-item>
+    <ion-label stacked>Address</ion-label>
+    <ion-item no-lines>
+      <ion-input disabled type="text" value="{{user.address.address}}"></ion-input>
+    </ion-item>
+    <ion-label stacked>City</ion-label>
+    <ion-item no-lines>
+      <ion-input disabled type="text" value="{{user.address.city}}"></ion-input>
+    </ion-item>    
+  </ion-list>
+  <ion-row padding>
+    <ion-col> 
+      <button ion-button block (click)="signOut()">Logout</button>
+    </ion-col>  
+  </ion-row>
+</ion-content>

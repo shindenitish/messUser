@@ -1,0 +1,60 @@
+page-create {
+    .input-cover{
+        display: none;
+    }   
+
+    .button {
+        text-transform: none;
+        margin-left: 12px!important;
+        width: 100%;
+    }
+
+    .label{
+        color: grey!important;
+    }
+
+    .label1{
+        padding-left: 15px;
+        font-weight: default;
+    }
+
+    .input{
+       // background: rgb(241, 237, 237) !important;  
+        border-bottom: rgb(240, 236, 236) solid 1px;
+    }
+
+    p{
+        font-size: smaller;
+        color: #e13838 !important;
+        padding-left: 17px;
+    }
+
+    .select {
+        border-bottom: rgb(240, 236, 236) solid 1px;  
+    }
+
+    .select.ng-dirty.ng-valid {
+        border-bottom: #5bec7f solid 1px;  
+        padding-left: 8px;      
+    }
+
+    .select.ng-dirty.ng-invalid {
+        border-bottom: #ec6a5b solid 1px;  
+        padding-left: 8px;      
+    }
+
+    .input.ng-dirty.ng-valid {
+        border-bottom: #5bec7f solid 1px;
+    }
+  
+    .input.ng-dirty.ng-invalid {
+        border-bottom: #ec6a5b solid 1px;
+    }
+    
+    ion-item{           
+        .item-inner{                
+          border-bottom-color: transparent !important; 
+          box-shadow:none!important;                      
+        }       
+    }
+}

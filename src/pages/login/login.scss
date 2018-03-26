@@ -1,0 +1,42 @@
+page-login{    
+    img {
+        width: auto;
+        height: 90px;
+        display: block;
+        margin: 0px auto;
+    }
+
+    .button {
+        text-transform: none;
+    }    
+
+    form{  
+            
+        p{
+            font-size: smaller;
+            color: #e13838 !important;
+            padding-left: 5px;
+        }
+
+        ion-label{
+            padding-left: 2px;
+        }
+
+        ion-item{            
+            background: rgb(241, 237, 237) !important;  
+
+            .item-inner{                
+                border-bottom-color: transparent !important; 
+                box-shadow:none!important;                      
+            }
+
+            .input.ng-dirty.ng-valid {
+                border-left: #5bec7f solid 2px;
+            }
+
+            .input.ng-dirty.ng-invalid {
+                border-left: #ec6a5b solid 2px;
+            }
+        }        
+    }
+}

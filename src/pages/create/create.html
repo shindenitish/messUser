@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Menu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="menuForm" (submit)="addMenu()" novalidate>             
+      <ion-item>
+        <ion-label stacked>Type</ion-label>          
+        <ion-select formControlName="menuType">
+          <ion-option selected value="false">Veg</ion-option>
+          <ion-option value="true">Non-Veg</ion-option>
+        </ion-select>
+      </ion-item> 
+      <p *ngIf="!menuForm.controls.menuType.valid  && menuForm.controls.menuType.dirty">
+        Menu type is required.
+      </p>
+      
+      <ion-item>
+        <ion-label stacked>Catgory</ion-label>          
+        <ion-select formControlName="menuCategory">
+          <ion-option selected value="0">Breakfast</ion-option>
+          <ion-option value="1">Lunch</ion-option>
+          <ion-option value="2">Dinner</ion-option>
+        </ion-select>
+      </ion-item>            
+      <p *ngIf="!menuForm.controls.menuCategory.valid  && menuForm.controls.menuCategory.dirty">
+        Menu category is required.
+      </p>
+      
+      <ion-label class="label1" stacked>Timing From</ion-label>
+      <ion-item no-lines>
+        <ion-input formControlName="timeFrom" type="datetime-local"></ion-input>  
+      </ion-item>
+      <p *ngIf="!menuForm.controls.timeFrom.valid  && menuForm.controls.timeFrom.dirty">
+        Timing is required.
+      </p>
+
+      <ion-label class="label1" stacked>Timing To</ion-label>         
+      <ion-item no-lines>
+        <ion-input formControlName="timeTo" type="datetime-local"></ion-input>  
+      </ion-item>         
+      <p *ngIf="!menuForm.controls.timeTo.valid  && menuForm.controls.timeTo.dirty">
+        Timing is required.
+      </p>
+
+      <ion-label class="label1" stacked>Menu Name</ion-label>         
+      <ion-item no-lines>
+        <ion-input formControlName="menuName" type="text"></ion-input>    
+      </ion-item>       
+      <p *ngIf="!menuForm.controls.menuName.valid  && menuForm.controls.menuName.dirty">
+        Menu name is required.
+      </p>
+
+      <ion-label class="label1" stacked>Description</ion-label>         
+      <ion-item no-lines>
+        <ion-textarea formControlName="description" fz-elastic></ion-textarea>  
+      </ion-item>
+      <p *ngIf="!menuForm.controls.description.valid  && menuForm.controls.description.dirty">
+        Description is required.
+      </p>
+
+      <ion-label class="label1" stacked>Rate</ion-label>         
+      <ion-item no-lines>
+        <ion-input formControlName="rate" type="number"></ion-input>    
+      </ion-item>       
+      <p *ngIf="!menuForm.controls.rate.valid  && menuForm.controls.rate.dirty">
+        Rate is required.
+      </p>
+
+      <ion-list inset>
+        <button margin-top ion-button [disabled]="!menuForm.valid" type="submit" >Add Menu</button>      
+      </ion-list>
+    </form>
+  </ion-list>
+</ion-content>
