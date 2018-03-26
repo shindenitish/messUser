@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
-declare var google;
+declare var google: any;
  
 @Component({
   selector: 'page-view-location',
@@ -12,31 +12,62 @@ export class ViewLocationPage{
  
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  markers = [];
  
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
- 
+  constructor(public navCtrl: NavController, 
+  public platform: Platform,
+  private geolocation: Geolocation) {
+    platform.ready().then(() => {
+      this.initMap();
+    });
   }
- 
-  ionViewDidLoad(){
-    this.loadMap();
-  }
- 
-  loadMap(){ 
-    this.geolocation.getCurrentPosition().then((position) => {
- 
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
- 
-      let mapOptions = {
-        center: latLng,
+
+  initMap() {
+    this.geolocation.getCurrentPosition({ enableHighAccuracy: true })
+    .then((resp) => {
+      let mylocation = new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude);
+        
+      this.map = new google.maps.Map(this.mapElement.nativeElement, {
         zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
- 
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
- 
-    }, (err) => {
-      console.log(err);
+        center: mylocation
+      });
+    },(err)=>{
       alert(err.message);
-    }); 
+    }).catch((err)=>{
+      alert(err.message);
+    });
+    
+    // let watch = this.geolocation.watchPosition();
+    // watch.subscribe((data) => {
+    //   this.deleteMarkers();
+    //   let updatelocation = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
+    //   let image = 'assets/imgs/avatar.png';
+    //   this.addMarker(updatelocation,image);
+    //   this.setMapOnAll(this.map);
+    // });
+  }
+
+  addMarker(location, image) {
+    let marker = new google.maps.Marker({
+      position: location,
+      map: this.map,
+      icon: image
+    });
+    this.markers.push(marker);
+  }
+  
+  setMapOnAll(map) {
+    for (var i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(map);
+    }
+  }
+  
+  clearMarkers() {
+    this.setMapOnAll(null);
+  }
+  
+  deleteMarkers() {
+    this.clearMarkers();
+    this.markers = [];
   }
 }
