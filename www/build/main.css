@@ -25887,11 +25887,11 @@ page-reviews ion-fab button[ion-fab] {
   background-color: transparent;
 }
 
-page-view-location .ios .scroll, page-view-location .md .scroll {
+.ios page-view-location .scroll, .md page-view-location .scroll {
   height: 100%;
 }
 
-page-view-location .ios #map, page-view-location .md #map {
+.ios page-view-location #map, .md page-view-location #map {
   width: 100%;
   height: 100%;
 }

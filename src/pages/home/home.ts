@@ -27,8 +27,8 @@ export class HomePage {
     this.navCtrl.push(MessDetailPage, { mid: messId, mName: messName } );
   }
 
-  viewLocation(){
-    this.navCtrl.push(ViewLocationPage);
+  viewLocation(messName){
+    this.navCtrl.push(ViewLocationPage, { messName: messName });
   }
 
 }
