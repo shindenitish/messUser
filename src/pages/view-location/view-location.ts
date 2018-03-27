@@ -28,7 +28,8 @@ export class ViewLocationPage{
       let mylocation = new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude);
         
       this.map = new google.maps.Map(this.mapElement.nativeElement, {
-        zoom: 15,
+        zoom: 16,
+        draggable: true,
         center: mylocation
       });
     },(err)=>{
@@ -36,38 +37,52 @@ export class ViewLocationPage{
     }).catch((err)=>{
       alert(err.message);
     });
+  
+    let watch = this.geolocation.watchPosition();
     
-    // let watch = this.geolocation.watchPosition();
-    // watch.subscribe((data) => {
+    watch.subscribe((data) => {
+
+      let marker = new google.maps.Marker({
+        position: this.map.getCenter(),
+        map: this.map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+      });
+
+      //marker.setPosition(this.map.getCenter());
+
+    // marker.bindTo('position', this.map, 'center');
+    //marker.setPosition( this.map.getCenter());
     //   this.deleteMarkers();
-    //   let updatelocation = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
+    // let updatelocation = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
     //   let image = 'assets/imgs/avatar.png';
-    //   this.addMarker(updatelocation,image);
+      //this.addMarker(updatelocation);
     //   this.setMapOnAll(this.map);
-    // });
+    });
   }
 
-  addMarker(location, image) {
+  addMarker() {
+
     let marker = new google.maps.Marker({
-      position: location,
+      position: this.map.getCenter(),
       map: this.map,
-      icon: image
+      draggable: true,
+      animation: google.maps.Animation.DROP,
     });
-    this.markers.push(marker);
+    
+    let content = "<h4>Information!</h4>";         
+ 
+    this.addInfoWindow(marker, content);
   }
   
-  setMapOnAll(map) {
-    for (var i = 0; i < this.markers.length; i++) {
-      this.markers[i].setMap(map);
-    }
-  }
-  
-  clearMarkers() {
-    this.setMapOnAll(null);
-  }
-  
-  deleteMarkers() {
-    this.clearMarkers();
-    this.markers = [];
+  addInfoWindow(marker, content){
+ 
+    let infoWindow = new google.maps.InfoWindow({
+      content: content
+    });
+   
+    google.maps.event.addListener(marker, 'click', () => {
+      infoWindow.open(this.map, marker);
+    });   
   }
 }
