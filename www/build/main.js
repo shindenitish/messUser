@@ -41,10 +41,10 @@ var HomePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-home',template:/*ion-inline-start:"/home/advait/Projects/PWA/myMessUser/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      myMess (Beta)\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-card *ngFor="let item of items | async">\n    <ion-card-content>\n      <ion-card-title (click)="viewMess(item.messId, item.messName)">\n        {{item.messName}}\n      </ion-card-title>\n      <p>\n        {{item.address.address}}<br/>\n        {{item.address.city}}<br/>\n        {{item.ownerName}} ({{item.contact}})<br/>\n        {{item.email}}\n      </p>\n    </ion-card-content>\n    <ion-row>\n      <ion-col col-10>\n        <button ion-button icon-only clear small>\n          <div style="width:20px; height:20px;">\n            <img *ngIf="item.menuType==\'false\'" src="assets/imgs/veg.png">\n            <img *ngIf="item.menuType==\'true\'" src="assets/imgs/non-veg.png">\n          </div>\n        </button>\n      </ion-col>        \n      <ion-col col-1>\n        <button ion-button icon-only clear small (click)="viewLocation(item.messName)">\n          <ion-icon name="map"></ion-icon>\n        </button>\n      </ion-col>        \n    </ion-row>\n  </ion-card>  \n</ion-content>\n'/*ion-inline-end:"/home/advait/Projects/PWA/myMessUser/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["a" /* AngularFirestore */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["a" /* AngularFirestore */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["a" /* AngularFirestore */]])
     ], HomePage);
     return HomePage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -459,16 +459,18 @@ var ViewLocationPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
     ], ViewLocationPage.prototype, "mapElement", void 0);
     ViewLocationPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-view-location',template:/*ion-inline-start:"/home/advait/Projects/PWA/myMessUser/src/pages/view-location/view-location.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Mess Location\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button style="text-transform: none!important;" icon-left (click)="addLocation()">\n          <ion-icon name="compass"></ion-icon>\n          Save\n      </button>\n    </ion-buttons> \n  </ion-navbar>\n</ion-header>\n \n<ion-content>\n  <div #map id="map"></div> \n</ion-content>'/*ion-inline-end:"/home/advait/Projects/PWA/myMessUser/src/pages/view-location/view-location.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]])
     ], ViewLocationPage);
     return ViewLocationPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=view-location.js.map
